@@ -18,11 +18,11 @@ const pokemonReducer=(state=initialState, action)=>{
                 ]
                 
             }
-            // case "searchCards":
-            //     return {
-            //         ...state,
-            //         pokemons: action.payload
-            //     }
+            case "deleteCard":
+                return {
+                    ...state,
+                    pokemons: state.pokemons.filter(p=> p.id!==action.payload)
+                }
         default:
             return state
     }

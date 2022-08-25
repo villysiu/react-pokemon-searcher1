@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { deleteCard } from './pokemonActions'
 
 const PokemonCard =(props) => {
   const {name, hp, sprites }=useSelector(state=>state.pokemons.find(p=>p.id===props.id))
@@ -8,20 +8,35 @@ const PokemonCard =(props) => {
 
 
   const [image, setImage] = useState(front)
+  const dispatch = useDispatch()
+  const handleClick=e=>{
+    e.preventDefault()
+    deleteCard(props.id, dispatch)
+  }
   
     return (
       
-      <div className="cardCol">
+      <div className="col16">
         <div className='card' >
-          <div className="image" onMouseOver={()=>setImage(back)} onMouseOut={()=>setImage(front)}>
-            <img src={image} alt={name} />
+          <div className="row">
+          <div className="col80">
+            <div className="image">
+              <img src={image} alt={name}   onMouseOver={()=>setImage(back)} onMouseOut={()=>setImage(front)} />
+            </div>
           </div>
+          <div className="col20">
+            
+            <i className="fa fa-close close-icon" onClick={handleClick} />
+          </div>
+          </div>
+
           <div className="content">
             <div className="header">{name}</div>
           </div>
+
           <div className="extra content">
             <span>
-              <i className="fa fa-heart red-heart" />
+              <i className="fa fa-heartbeat red-heart-icon" />
               {hp} hp
             </span>
           </div>

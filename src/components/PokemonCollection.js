@@ -14,7 +14,7 @@ const PokemonCollection =()=> {
   // console.log(pokemonIds)
   
     return (
-      <div>
+      <div id="PokemonCollection">
         <h1>Hello From Pokemon Collection</h1>
         <div className="row">
           { pokemonIds.map(pokemon_id=> <PokemonCard key={pokemon_id} id={pokemon_id} />) }

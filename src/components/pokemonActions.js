@@ -43,3 +43,15 @@ export const searchCards = async (searchterm, dispatch) =>{
     
     }
 }
+export const deleteCard = async (id, dispatch)=>{
+    const url=`http://localhost:3000/pokemon/${id}`
+    try {
+        const response=await fetch(url, { method: "DELETE"  })
+        await response.json()
+
+        dispatch({type: "deleteCard", payload: id})
+
+    } catch(err) {
+        console.log("error", err)
+    }
+}

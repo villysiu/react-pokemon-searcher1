@@ -17,23 +17,23 @@ const PokemonForm =()=> {
         setBackUrl("")
     }
     return (
-        <div>
+        <div id="addPokemon">
             <h3>Add a Pokemon!</h3>
             <form onSubmit={handleSubmit}>
                 <div className="row">
-                    <div className="column">
+                    <div className="col25">
                         <b>Name</b>
                         <input type="text" className="inputbox" placeholder="Name" name="name" value={name} onChange={e=>setName(e.target.value)} />
                     </div>
-                    <div className="column">
+                    <div className="col25">
                         <b>hp</b>
                         <input type="text"  className="inputbox" placeholder="hp" name="hp" value={hp} onChange={e=>setHp(e.target.value)}/>
                     </div>
-                    <div className="column">
+                    <div className="col25">
                         <b>Front Image URL</b>
                         <input type="text"  className="inputbox" placeholder="url" name="frontUrl" value={frontUrl} onChange={e=>setFrontUrl(e.target.value)} />
                     </div>
-                    <div className="column">
+                    <div className="col25">
                         <b>Back Image URL</b>
                         <input type="text"  className="inputbox" placeholder="url" name="backUrl" value={backUrl} onChange={e=>setBackUrl(e.target.value)} />
                     </div>

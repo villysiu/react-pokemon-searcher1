@@ -27,15 +27,27 @@
 }
 
 /* Create four equal columns that floats next to each other */
-.column {
+.col25 {
   float: left;
   width: 25%;
   padding: 10px;
   /* height: 300px; Should be removed. Only for demonstration */
 }
-.cardCol {
+.col16 {
   float: left;
   width: 16%;
+  padding: 10px;
+  
+}
+.col80 {
+  float: left;
+  width: 80%;
+  padding: 10px;
+  /* height: 300px; Should be removed. Only for demonstration */
+}
+.col20 {
+  float: left;
+  width: 20%;
   padding: 10px;
   
 }
@@ -89,8 +101,15 @@ input[type=button] {
   border-radius: 10px;
   margin: 10px;
 }
-.red-heart {
+.red-heart-icon {
   padding: 10px;
   color: red
   /* min-width: 100px; */
+}
+.close-icon {
+  text-align: center; 
+  
+}
+.close-icon:hover {
+  color: red
 }
