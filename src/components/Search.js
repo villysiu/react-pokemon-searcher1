@@ -3,17 +3,12 @@ import { useDispatch } from 'react-redux'
 import { searchCards } from './pokemonActions'
 const Search = props => {
   const dispatch=useDispatch()
-  const handleChange= e => {
-    // e.preventDefault()
-    
-    searchCards(e.target.value, dispatch)
-  }
+  
   return (
-
     <div className="ui-search">
         <div className="input-icons">
             
-            <input type="text" className="searchbox" onChange={handleChange} />
+            <input type="text" className="searchbox" onChange={e=>searchCards(e.target.value, dispatch)} />
             <i className="fa fa-search icon" />
         </div> 
     </div>

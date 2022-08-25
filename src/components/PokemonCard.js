@@ -9,10 +9,7 @@ const PokemonCard =(props) => {
 
   const [image, setImage] = useState(front)
   const dispatch = useDispatch()
-  const handleClick=e=>{
-    e.preventDefault()
-    deleteCard(props.id, dispatch)
-  }
+  
   
     return (
       
@@ -25,8 +22,7 @@ const PokemonCard =(props) => {
             </div>
           </div>
           <div className="col20">
-            
-            <i className="fa fa-close close-icon" onClick={handleClick} />
+            <i className="fa fa-close close-icon" onClick={e=>deleteCard(props.id, dispatch)} />
           </div>
           </div>
 
