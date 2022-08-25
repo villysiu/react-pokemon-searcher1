@@ -18,6 +18,11 @@ const pokemonReducer=(state=initialState, action)=>{
                 ]
                 
             }
+            // case "searchCards":
+            //     return {
+            //         ...state,
+            //         pokemons: action.payload
+            //     }
         default:
             return state
     }

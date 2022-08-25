@@ -30,3 +30,16 @@ export const addCard=async (card, dispatch)=>{
         console.log("error", error);
     }
 }
+export const searchCards = async (searchterm, dispatch) =>{
+    const url="http://localhost:3000/pokemon"
+    const len=searchterm.length
+    try {
+        const response=await fetch(url)
+        const data=await response.json()
+        
+        dispatch({type: "addCards", payload: data.filter(p=>p.name.slice(0,len)===searchterm)})
+    } catch(error){
+        console.log("error", error);
+    
+    }
+}
