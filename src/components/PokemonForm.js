@@ -1,48 +1,34 @@
-import React, { useState } from 'react'
+import { useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import { addCard } from './pokemonActions'
 const PokemonForm =()=> {
-    // const [name, setName] = useState("")
-    // const [hp, setHp] = useState("")
-    // const [frontUrl, setFrontUrl] = useState("")
-    // const [backUrl, setBackUrl] = useState("")
-    const [pokemon, setPokemon]=useState({
-            name: '',
-            hp: '',
-            frontUrl: '',
-            backUrl: ''
-        }
-    )
-    const handleChange=e=>{
-        setPokemon({
-            ...pokemon,
-            [e.target.name]: e.target.value
-        })
-    }
-    const dispatch=useDispatch()
+   
+    const nameRef=useRef();
+    const hpRef=useRef();
+    const frontUrlRef=useRef();
+    const backUrlRef=useRef();
+
+    const dispatch=useDispatch();
 
     const handleSubmit=(e)=>{
-         e.preventDefault()
+         e.preventDefault();
+
          addCard({ 
-                name: pokemon.name, 
-                hp: pokemon.hp, 
+                name: nameRef.current.value, 
+                hp: hpRef.current.value,
                 sprites: {
-                    front: pokemon.frontUrl, 
-                    back: pokemon.backUrl
+                    front: frontUrlRef.current.value, 
+                    back: backUrlRef.current.value 
                 } 
             }, 
             dispatch )
-        setPokemon({
-            name: "",
-            hp: "",
-            frontUrl: "",
-            backUrl: "",
-        }
-        )
-        // setName("")
-        // setHp("")
-        // setFrontUrl("")
-        // setBackUrl("")
+
+        nameRef.current.value = '';
+        hpRef.current.value='';
+        frontUrlRef.current.value='';
+        backUrlRef.current.value='';
+
+   
     }
     return (
         <div id="addPokemon">
@@ -51,19 +37,19 @@ const PokemonForm =()=> {
                 <div className="row">
                     <div className="col25">
                         <b>Name</b>
-                        <input type="text" className="inputbox" placeholder="Name" name="name" value={pokemon.name} onChange={handleChange} />
+                        <input type="text" className="inputbox" placeholder="Name" name="name" ref={nameRef} />
                     </div>
                     <div className="col25">
                         <b>hp</b>
-                        <input type="text"  className="inputbox" placeholder="hp" name="hp" value={pokemon.hp} onChange={handleChange} />
+                        <input type="text"  className="inputbox" placeholder="hp" name="hp" ref={hpRef}  />
                     </div>
                     <div className="col25">
                         <b>Front Image URL</b>
-                        <input type="text"  className="inputbox" placeholder="url" name="frontUrl" value={pokemon.frontUrl} onChange={handleChange} />
+                        <input type="text"  className="inputbox" placeholder="url" name="frontUrl" ref={frontUrlRef}  />
                     </div>
                     <div className="col25">
                         <b>Back Image URL</b>
-                        <input type="text"  className="inputbox" placeholder="url" name="backUrl" value={pokemon.backUrl} onChange={handleChange} />
+                        <input type="text"  className="inputbox" placeholder="url" name="backUrl" ref={backUrlRef} />
                     </div>
                 </div>
                 <div>
