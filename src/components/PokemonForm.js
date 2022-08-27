@@ -3,53 +3,51 @@ import { useDispatch } from 'react-redux'
 import { addCard } from './pokemonActions'
 const PokemonForm =()=> {
    
-    const nameRef=useRef();
-    const hpRef=useRef();
-    const frontUrlRef=useRef();
-    const backUrlRef=useRef();
-
+    // const nameRef=useRef();
+    // const hpRef=useRef();
+    // const frontUrlRef=useRef();
+    // const backUrlRef=useRef();
+    const formRef=useRef()
     const dispatch=useDispatch();
 
     const handleSubmit=(e)=>{
          e.preventDefault();
-
+         const formData = new FormData(formRef.current);
+         const data = Object.fromEntries(formData);
+        //  console.log(data);
          addCard({ 
-                name: nameRef.current.value, 
-                hp: hpRef.current.value,
+                name: data.name, 
+                hp: data.hp,
                 sprites: {
-                    front: frontUrlRef.current.value, 
-                    back: backUrlRef.current.value 
+                    front: data.frontUrl, 
+                    back: data.backUrlm 
                 } 
+                
             }, 
             dispatch )
-
-        nameRef.current.value = '';
-        hpRef.current.value='';
-        frontUrlRef.current.value='';
-        backUrlRef.current.value='';
-
+            e.target.reset()
    
     }
     return (
         <div id="addPokemon">
             <h3>Add a Pokemon!</h3>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} ref={formRef}>
                 <div className="row">
                     <div className="col25">
                         <b>Name</b>
-                        <input type="text" className="inputbox" placeholder="Name" name="name" ref={nameRef} />
+                        <input type="text" className="inputbox" placeholder="Name" name="name" defaultValue="" />
                     </div>
                     <div className="col25">
                         <b>hp</b>
-                        <input type="text"  className="inputbox" placeholder="hp" name="hp" ref={hpRef}  />
+                        <input type="text"  className="inputbox" placeholder="hp" name="hp"   />
                     </div>
                     <div className="col25">
                         <b>Front Image URL</b>
-                        <input type="text"  className="inputbox" placeholder="url" name="frontUrl" ref={frontUrlRef}  />
+                        <input type="text"  className="inputbox" placeholder="url" name="frontUrl"  />
                     </div>
                     <div className="col25">
                         <b>Back Image URL</b>
-                        <input type="text"  className="inputbox" placeholder="url" name="backUrl" ref={backUrlRef} />
+                        <input type="text"  className="inputbox" placeholder="url" name="backUrl" />
                     </div>
                 </div>
                 <div>
